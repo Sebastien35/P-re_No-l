@@ -1,0 +1,40 @@
+body{
+    background-color: #eeeeee;
+}
+
+.Bandeau{
+    white-space: nowrap;
+    overflow:hidden;
+    color:#F9F9F9;
+    animation: scrollText 15s linear infinite;/*  breathing-color--dark 1s infinite alternate ease-out; */
+    display: block;
+}
+
+.fond_bandeau {
+    background-color: azure;
+    animation: breathing-color--dark 1s infinite alternate ease-out
+}  
+
+.text_bandeau{
+    font-size: larger;
+    padding-bottom: 0px;
+}
+@keyframes scrollText {
+    from {
+        transform: translateX(100%); 
+    }
+    to {
+        transform: translateX(-100%); 
+    }
+}
+
+@keyframes breathing-color--dark {
+    from
+    {
+        background-color: #34a65f
+    }
+    to
+    {
+        background-color: #0F8A5F
+    }
+}

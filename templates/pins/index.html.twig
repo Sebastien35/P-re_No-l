@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}L'atelier du Père Noël{% endblock %}
+{% block stylesheet %} 
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/index.css') }}">
+{% endblock %}
+
+
+
+{% block body %}
+<div class="fond_bandeau">
+    <div class="Bandeau">
+        <p class="text_bandeau" id="days"></p>
+    </div>
+</div>
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="article">
+                <div class="card neige_ici">
+                    <img src="{{ asset('medias/webP/ia_1.webp') }}" class="card-img-top">
+                    <h5 class="card-title">🎄 Noël</h5>
+                    <p class="card-text">Les étoiles brillent dans le ciel, et les rues s'illuminent de lumières joyeuses.<br> C'est le moment où l'on décore le sapin avec des boules colorées et des guirlandes scintillantes. Les enfants écrivent des lettres remplies de rêves au Père Noël et font des bonhommes de neige tout doux. <br> Dans l'air, flotte l'odeur délicieuse de biscuits tout juste sortis du four. Le jour de Noël, on échange des cadeaux soigneusement emballés, et chacun répand la joie autour de lui.<br> On se réunit en famille, on chante des chants festifs, et on savoure un délicieux festin. Noël, c'est surtout le moment de partager, d'aimer et de croire en la magie. Joyeuses fêtes à tous ! 🎄✨</p>
+                </div>
+
+                <div class="card neige_ici">
+                    <img src="{{ asset('medias/webP/ia_2.webp') }}" class="card-img-top">
+                    <h5 class="card-title"> 🎄 La Magie de Noël 🎅</h5>
+                    <p class="card-title">Noël, une fête enchantée, célèbre la naissance de Jésus et répand la joie dans le monde.<br> Les familles décorent des sapins scintillants et échangent des cadeaux. Le Père Noël, avec son traîneau et ses rennes, apporte des présents aux enfants sages. <br> Les maisons brillent de lumières colorées et de décorations festives. Les gens se réunissent pour partager des repas délicieux. Le tout dans une atmosphère de chaleur et d'amour. Les flocons de neige dansent dans le ciel, créant un paysage magique. Noël, c'est aussi le moment d'être généreux et reconnaissants. Alors, préparez-vous à être émerveillés par la magie de Noël et à partager des moments inoubliables avec ceux que vous aimez. Joyeux Noël à tous ! 🌟🎁🎉</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="{{ asset('js/CAR.js') }}"></script>
+<script src="{{ asset('js/snow.js') }}"></script>
+{% endblock %}
