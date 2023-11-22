@@ -8,14 +8,30 @@
     border:0px; 
     margin: 0px; 
     height: 42px; 
-    width: auto"
+    width: auto
 }
-#gift_ico:hover{
+#gift_ico:hover {
     transform: scale(1.1) translateY(-5%);
-    animation: shake 0.5s;
+    animation: shake 2s;
     animation-iteration-count: infinite
 
 }
+
+#key_ico{
+    transition: all .2s ease-in-out;
+    border:0px; 
+    margin: 0px; 
+    height: 42px; 
+    width: auto;
+}
+#key_ico:hover {
+    transform: scale(1.1) translateY(5%);
+    animation: shake 2s;
+    animation-iteration-count: infinite
+
+}
+
+
 
 @keyframes shake {
     0% { transform: translate(1px, 1px) rotate(0deg); }

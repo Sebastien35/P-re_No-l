@@ -2,27 +2,23 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}L'atelier du père Noël{% endblock %}</title>
         <meta name="robots" content="index, follow">
         <meta name="description" cotent ="Un projet Studi %c , par Sébastien Borgne">
-        <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <link rel="stylesheet" href="{{ asset ('css/navbar_stylesheet.css') }} "> -->
-        
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        <link rel="stylesheet" href="{{ asset ('css/navbar_stylesheet.css') }} ">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        {% endblock %}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        
-        {% endblock %}
+        <!-- Feuilles de style générales + CDN Bootstrap -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ asset('css/navbar_stylesheet.css') }} "> 
+        <link rel="stylesheet" href="{{ asset('css/background.css') }}  ">      
+        {% block stylesheet %} {% endblock %}
+        {% block javascripts %} {% endblock %}
     </head>
     <body>
     <nav class="navbar navbar-expand-lg navbar-dark  navbar-custom " id="navbar-custom">
         <a class="navbar-brand" href="/"><H1> L'atelier magique du Père Noël</H1></a>
         <a class="nav-item" href="/gifts"><img src="{{ asset('medias/png/chr_gift.png') }}"  id="gift_ico"></a>
+        <a class="nav-item" href="/account"><img src="{{ asset('medias/png/key.png') }}" id="key_ico"></a>
     </nav>
 
 

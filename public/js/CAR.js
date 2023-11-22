@@ -12,7 +12,7 @@ function updateCountdown() {
     var daysRemaining = Math.ceil(timeRemaining / (1000 * 60 * 60 * 24));
 
     // Affichage du nombre de jours restants
-    document.getElementById("days").innerHTML = "Il ne reste plus que " +  daysRemaining + " jours avant Noël";
+    document.getElementById("days").innerHTML = "Il ne reste plus que " +  daysRemaining + " jours avant Noël !!!";
 }
 
 // Mettre à jour le compte à rebours chaque seconde

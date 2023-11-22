@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accounts{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .btn-custom {
+            width: 100%; /* ou une valeur fixe, par exemple, width: 150px; */
+            text-align: center;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<body style="background-image: url('{{ asset('medias/png/chr_bg_1.jpg') }}');">
+    {% if is_granted('ROLE_USER') %}
+    <div class="container" style="display: flex; align-items: center; justify-content: center; height: 100vh;">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <a class="btn btn-outline-danger" href=" {{ path('app_logout') }} ">Se déconnecter</a>
+                </div>
+            </div>
+        
+    {% else %}
+    <div class="container" style="display: flex; align-items: center; justify-content: center; height: 100vh;">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <a class="btn btn-outline-success btn-custom" href="/register"><p> Créer un compte </p></a>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <a class="btn btn-outline-success btn-custom" href="/login"><p> Se connecter </p></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</body>
+{% endblock %}
