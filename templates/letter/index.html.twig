@@ -1,24 +1,39 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Letter{% endblock %}
+{% block title %}Lettre de Noël{% endblock %}
 
 {% block body %}
+    
+     {% if is_granted('ROLE_USER') %}
 
-<body style="background-image: url('{{ asset('medias/png/chr_bg_1.jpg') }}');">
-<div class="container" style="display: flex; align-items: center; justify-content: center; height: 100vh; background-color:hsl(42, 79%, 94%); ">
-    <div class="Card">
-        <p class="card-header">Écris ta lettre au Père-Noël<p>
-        <form action>
-            <div class="card-text">
-                <label for="name"><p>Comment tu t'appelles ?</p></label>
-                <input type="text" name="name" id="name">
+<div class="container mt-5">
+    <div class="row">
+        {% for letter in letters %}
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        
+                        <p class="card-text">Expéditeur: {{ letter.senderName }}</p>
+                        <p class="card-text"> {{ letter.letterContent }}</p>
+                        <div class="btn-group">
+                            <a href="{{ path('app_letter_show', {'id': letter.id}) }}" class="btn btn-primary">Show</a>
+                            <a href="{{ path('app_letter_edit', {'id': letter.id}) }}" class="btn btn-secondary">Edit</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <textarea class="card-body" id="lettre" name="lettre" rows="10" cols="66">Cher Père-Noël, pour Noël cette année je voudrais....</textarea>
-            <div class="card-footer text-muted">
-            <input  type="submit" value="Envoyer ma lettre">
+        {% else %}
+            <div class="col-md-12">
+                <div class="alert alert-warning" role="alert">
+                    No records found
+                </div>
             </div>
-        </form>
+        {% endfor %}
     </div>
 </div>
-</body>
+
+{% else %}
+
+    <a href="{{ path('app_letter_new') }}" class="btn btn-outline-success">Écrire ma lettre au Père-Noël</a>
+{% endif %}
 {% endblock %}
