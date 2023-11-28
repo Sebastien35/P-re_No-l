@@ -6,23 +6,73 @@
     <div class="container mt-4">
         <h1>Liste des Cadeaux</h1>
 
+        <!-- Ajouter le Slider pour Pegi -->
+        <label for="pegiSlider">Age:</label>
+        <input type="range" min="1" max="18" value="1" class="slider" id="pegiSlider">
+        
+
+        <!-- Ajouter le Menu Déroulant pour Catégorie -->
+        <label for="categorieSelect">Filtrer par Catégorie:</label>
+        <select id="categorieSelect">
+            <option value="toutes">Toutes les Catégories</option>
+            <option value="Jouet">Jouets</option>
+            <option value="Livre">Livres</option>
+            <option value="Jeu-Vidéo">Jeux-Vidéos</option>
+            {# Ajouter d'autres options de catégorie ici #}
+        </select>
+
         <div class="row">
             {% for gift in gifts %}
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ gift.nom }}</h5>
-                            <p class="card-text"><strong>Catégorie:</strong> {{ gift.categorie }}</p>
-                            <p class="card-text"><strong>Pegi:</strong> {{ gift.pegi }}</p>
-                            <!-- Ajoutez d'autres détails du cadeau ici -->
-
-                            <!-- Vous pouvez également ajouter des liens pour afficher, éditer ou supprimer le cadeau -->
-                            <a href="{{ path('app_gift_show', {'id': gift.id}) }}" class="btn btn-primary">Voir détails</a>
-                            <a href="{{ path('app_gift_edit', {'id': gift.id}) }}" class="btn btn-secondary">Modifier</a>
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
+    <div class="col-md-4 mb-4 gift" data-pegi="{{ gift.pegi }}" data-categorie="{{ gift.categorie }}">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ gift.nom }}</h5>
+                <p class="card-text "><strong>Catégorie:</strong> {{ gift.categorie }}</p>
+                <p class="card-text "><strong><p id="pegiValue"> Pegi</strong> {{ gift.pegi }}</p>
+                <!-- Add other gift details here -->
+            </div>
         </div>
     </div>
+{% endfor %}
+        </div>
+    </div>
+
+<script>
+    // Récupérer les éléments DOM
+    const pegiSlider = document.getElementById('pegiSlider');
+    const pegiValue = document.getElementById('pegiValue');
+    const categorieSelect = document.getElementById('categorieSelect');
+    const cadeaux = document.querySelectorAll('.gift');  // Use .gift for the class selector
+
+    // Écouter les changements du Slider Pegi
+    pegiSlider.addEventListener('input', () => {
+        pegiValue.textContent = pegiSlider.value;
+        // Filtrer les cadeaux par Pegi
+        filterCadeaux();
+    });
+
+    // Écouter les changements du Menu Déroulant Catégorie
+    categorieSelect.addEventListener('change', () => {
+        // Filtrer les cadeaux par Catégorie
+        filterCadeaux();
+    });
+
+    // Fonction pour filtrer les cadeaux en fonction des filtres
+    function filterCadeaux() {
+        const selectedPegi = parseInt(pegiSlider.value);
+        const selectedCategorie = categorieSelect.value;
+
+        cadeaux.forEach(cadeau => {
+            const cadeauPegi = parseInt(cadeau.dataset.pegi);
+            const cadeauCategorie = cadeau.dataset.categorie;
+
+            // Vérifier les filtres et masquer ou afficher le cadeau en conséquence
+            const isPegiValid = selectedPegi === 1 || cadeauPegi <= selectedPegi;
+            const isCategorieValid = selectedCategorie === 'toutes' || cadeauCategorie === selectedCategorie;
+
+            cadeau.style.display = isPegiValid && isCategorieValid ? '' : 'none';
+        });
+    }
+</script>
+
 {% endblock %}
