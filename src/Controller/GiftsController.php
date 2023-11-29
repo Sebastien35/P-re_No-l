@@ -28,4 +28,22 @@ class GiftsController extends AbstractController
             'gift' => $gift,
         ]);
     }
+
+    
+    #[Route('/gift/details/{id}', name: 'gift_details', methods: ['GET'])]
+    public function details(GiftRepository $giftRepository, $id): Response
+    {
+        // Fetch a single gift based on the provided ID
+        $gift = $giftRepository->find($id);
+
+        if (!$gift) {
+            throw $this->createNotFoundException('Gift not found');
+        }
+
+        return $this->render('gifts/details.html.twig', [
+            'gift' => $gift,
+        ]);
+    }
+
+    
 }

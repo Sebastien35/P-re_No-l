@@ -10,6 +10,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use phpDocumentor\Reflection\Types\Integer;
 
 class GiftCrudController extends AbstractCrudController
@@ -37,6 +38,8 @@ class GiftCrudController extends AbstractCrudController
             TextField::new('nom'),
             TextField::new('categorie'),
             IntegerField::new('pegi'),
+            TextField::new('details'),
+            ImageField::new('image')->setUploadDir('public\medias\gift_images')
         ];
     }
 

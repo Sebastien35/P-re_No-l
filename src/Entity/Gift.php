@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\GiftRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: GiftRepository::class)]
@@ -21,6 +22,15 @@ class Gift
 
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
+
+    #[ORM\Column(length: 2000, nullable: true)]
+    private ?string $details = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $image = null;
+
+    #[ORM\Column(type: Types::BLOB, nullable: true)]
+    private $images = null;
 
     public function getId(): ?int
     {
@@ -66,5 +76,41 @@ class Gift
     public function __toString(): string
     {
         return $this->nom;
+    }
+
+    public function getDetails(): ?string
+    {
+        return $this->details;
+    }
+
+    public function setDetails(?string $details): static
+    {
+        $this->details = $details;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): static
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    public function getImages()
+    {
+        return $this->images;
+    }
+
+    public function setImages($images): static
+    {
+        $this->images = $images;
+
+        return $this;
     }
 }
