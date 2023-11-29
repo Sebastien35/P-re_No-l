@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ gift.nom}} {% endblock %}
+
+{% block body %}
+</br>
+</br>
+<div class="container">
+<div class="row article ">
+    <div class="card">
+        <img class="card-img-top" src='{{ asset('medias/gift_images/' ~ gift.image) }}'>
+        <h1 class="card-title"> {{gift.nom}} </h1>
+        <p class="card-text">Référence: {{ gift.id }}</p>
+        <p class="card-text">Description:</br> {{gift.details}} </p>
+    </div>
+</div>
+</div>
+</br></br>
+{% endblock %}
