@@ -17,8 +17,6 @@ class Avis
     #[ORM\Column(length: 255)]
     private ?string $author = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $date = null;
 
     #[ORM\Column(length: 2000)]
     private ?string $content = null;
@@ -43,17 +41,7 @@ class Avis
         return $this;
     }
 
-    public function getDate(): ?\DateTimeInterface
-    {
-        return $this->date;
-    }
-
-    public function setDate(\DateTimeInterface $date): static
-    {
-        $this->date = $date;
-
-        return $this;
-    }
+   
 
     public function getContent(): ?string
     {
