@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}  Ma liste de noël {% endblock %}
+
+{% block body %}
+    <h1>My Christmas List</h1>
+    {% if liste is empty %}
+        <p>Your list is empty. Add some gifts!</p>
+    {% else %}
+        <ul>
+            {% for giftId, quantity in liste %}
+                <li>{{ giftId }} (Quantity: {{ quantity }})</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+     
+{% endblock %}

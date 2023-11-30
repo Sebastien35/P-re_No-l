@@ -12,3 +12,17 @@ avis:
     path: '/avis'
     controller: 'App\Controller\AvisController::index'
 
+liste_ajouter:
+    path: '/maliste/ajouter/{id}'
+    controller: 'App\Controller\listController::add'
+
+liste_voir:
+    path: '/maliste/voir'
+    controller: 'App\Controller\listController::voirListe'
+    methods: ['GET']
+
+liste_retirer:
+    path: '/maliste/retirer/{id}'
+    controller: 'App\Controller\listController::retirer'
+    methods: ['GET']
+
