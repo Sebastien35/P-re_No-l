@@ -7,3 +7,8 @@ controllers:
 gift_details:
     path: '/gift/details/{id}'
     controller: App\Controller\GiftsController::details
+
+avis:
+    path: '/avis'
+    controller: 'App\Controller\AvisController::index'
+

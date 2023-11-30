@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 use App\Entity\Gift; 
+use App\Entity\Avis;
 
 class DashboardController extends AbstractDashboardController
 {
@@ -31,7 +32,7 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('Atelier Studi');
+            ->setTitle('L\'atelier du Père-Noël');
     }
 
     public function configureMenuItems(): iterable
@@ -41,6 +42,12 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::subMenu('Actions', 'fas fa-bar')->setSubItems([
             MenuItem::linkToCrud('Create Gift', 'fas fa-plus-circle', Gift::class)->setAction(Crud::PAGE_NEW),
             MenuItem::linkToCrud('Show Gifts', 'fas fa-eye', Gift::class),
+        ]);
+        yield MenuItem::section('Avis');
+        yield MenuItem::subMenu('Actions','fas fa-bar')->setSubItems([
+            MenuItem::linktoCrud('Edit Avis','fas fa-plus-circle', Avis::class)->setAction(Crud::PAGE_NEW),
+            MenuItem::linkToCrud('Show Avis', 'fas fa-eye', Avis::class),
+
         ]);
     }
 }

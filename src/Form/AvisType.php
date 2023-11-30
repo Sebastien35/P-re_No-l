@@ -13,7 +13,7 @@ class AvisType extends AbstractType
     {
         $builder
             ->add('author')
-            ->add('date')
+            
             ->add('content')
             
         ;
