@@ -26,3 +26,8 @@ liste_retirer:
     controller: 'App\Controller\listController::retirer'
     methods: ['GET']
 
+liste_message:
+    path: '/maliste/message'
+    controller: 'App\Controller\listController::message'
+    methods: ['POST']
+

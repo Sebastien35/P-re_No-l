@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Gift;
+use App\Entity\Wishlist;
 use App\Repository\GiftRepository;
+
 
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -72,4 +74,35 @@ public function retirer($id, Request $request){
     $session->set('liste', $liste);
     return $this -> redirectToRoute('liste_voir');
 }
+
+/**
+ * @Route("/maliste/message", name="liste_message" methods={"POST"})
+ */
+public function message(Request $request, EntityManagerInterface $entityManager)
+{
+    $message = $request->request->get('message', '');
+    $liste = $request->getSession()->get('liste', []);
+
+    // Fetch all gifts
+    $gifts = $entityManager->getRepository(Gift::class)->findBy(['id' => array_keys($liste)]);
+
+    // Create a new Wishlist entity
+    $wishlist = new Wishlist();
+    $wishlist->setMessage($message);
+    
+    foreach ($gifts as $gift) {
+        $wishlist->addGift($gift);
+    }
+
+    // Persist the Wishlist entity to the database
+    $entityManager->persist($wishlist);
+    $entityManager->flush();
+
+    // Clear the session after saving to the database
+    $request->getSession()->remove('liste');
+
+    return $this->redirectToRoute('liste_voir');
 }
+
+
+ }

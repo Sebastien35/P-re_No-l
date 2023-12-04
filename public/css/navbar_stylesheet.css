@@ -58,7 +58,19 @@
     animation-iteration-count: infinite
 
 }
-
+.nav-item{
+    
+        transition: all .2s ease-in-out;
+        border:0px; 
+        margin: 0px; 
+        height: 65px; 
+        width: auto;
+    }
+.nav-item:hover {
+        transform: scale(1.1) translateY(5%);
+        animation: shake 2s;
+        animation-iteration-count: infinite
+}
 
 
 @keyframes shake {

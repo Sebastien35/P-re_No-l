@@ -22,13 +22,18 @@
                 <p class="card-text"><strong>Pegi</strong> <span class="pegi-value">{{ gift.pegi }}</span></p>
                 <a class="btn btn-outline-danger" href="{{ path('gift_details', {'id': gift.id}) }}">Détails</a>
                 <a class="btn btn-outline-danger float-right" href="{{ path('liste_retirer', {'id': gift.id}) }}"
-                                <i class="fas fa-shopping-cart mr-1"></i> Retirer de ma liste </a>
+                                <i class="fas  mr-1"></i> Retirer de ma liste </a>
                 </div>
                 
                 </div>
                 
             {% endfor %}
-        </div>
+            <form method='POST' action="{{ url('liste_message') }}">
+            <label for="message">Message au Père-Noël:</label>
+            <textarea name="message" id="message"></textarea>
+            <input type="submit" value="Envoyer ma lettre au Père-Noël">
+            </form>
+            </div>
         
     {% endif %}
 {% endblock %}

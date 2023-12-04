@@ -12,6 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 use App\Entity\Gift; 
 use App\Entity\Avis;
+use App\Entity\DemandeDeContact;
 
 class DashboardController extends AbstractDashboardController
 {
@@ -48,6 +49,10 @@ class DashboardController extends AbstractDashboardController
             MenuItem::linktoCrud('Edit Avis','fas fa-plus-circle', Avis::class)->setAction(Crud::PAGE_NEW),
             MenuItem::linkToCrud('Show Avis', 'fas fa-eye', Avis::class),
 
+        ]);
+        yield MenuItem::section('Demandes de contact');
+        yield MenuItem::subMenu('Actions', 'fas fa-bar')->setSubItems([
+            MenuItem::linkToCrud('Voir les demandes de contact', 'fas fa-eye', DemandeDeContact::class)
         ]);
     }
 }
