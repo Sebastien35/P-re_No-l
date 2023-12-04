@@ -32,6 +32,8 @@
                             <p class="card-text"><strong>Catégorie:</strong> {{ gift.categorie }}</p>
                             <p class="card-text"><strong>Pegi</strong> <span class="pegi-value">{{ gift.pegi }}</span></p>
                             <a class="btn btn-outline-danger" href="{{ path('gift_details', {'id': gift.id}) }}">Détails</a>
+                            <a class="btn btn-outline-success float-right" href="{{ path('liste_ajouter', {'id': gift.id}) }}"
+                                <i class="fas fa-shopping-cart mr-1"></i> Ajouter à ma liste </a>
                         </div>
                     </div>
                 </div>
